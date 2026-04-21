@@ -14,7 +14,6 @@ export default function SignupPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
-  const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5000";
   const sessionDurationMs = 8 * 60 * 60 * 1000;
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -23,7 +22,7 @@ export default function SignupPage() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${apiBaseUrl}/api/auth/signup`, {
+      const response = await fetch(`/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

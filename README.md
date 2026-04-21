@@ -33,11 +33,8 @@ This project was developed using **Antigravity (AI Coding Assistant)**.
 - **Component Reuse**: Refactored logic to keep components like cards and buttons highly reusable.
 - **Signup Logic**: Manually removed the "Company" field from the signup page as per final refinements.
 
-## 📈 Future Improvements (With More Time)
-- **Real Authentication**: Integrate Clerk or NextAuth.js for real user management.
-- **Backend Storage**: Connect the lead capture form to a database like MongoDB or Supabase.
-- **Enhanced Animations**: Add more staggered entrance animations and scroll-spy features to the Navbar.
-- **Accessibility (a11y)**: Further improve keyboard navigation and ARIA labels.
+## 🔐 Backend Authentication
+- **Built-in Auth**: The project already includes a backend authentication system using bcrypt for password hashing and JWT tokens for session/authentication. The auth endpoints (signup/login) are implemented in the backend service and return JWTs the frontend stores for authenticated requests.
 
 ## ⚙️ Setup Instructions
 1.  **Clone the repository**:
