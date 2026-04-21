@@ -51,7 +51,7 @@ This project was developed using **Antigravity (AI Coding Assistant)**.
     npm run dev
     ```
 4.  **Open the app**:
-    Navigate to [http://localhost:3000](http://localhost:3000)
+    Navigate to [http://localhost:5000](http://localhost:5000)
 
 ---
 *Created as part of the Full Stack Developer Intern assignment.*
