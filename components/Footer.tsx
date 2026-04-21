@@ -52,18 +52,18 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-start space-x-3 text-gray-400">
                 <Mail size={18} className="text-primary mt-0.5" />
-                <span>admissions@accredian.com</span>
+                <span>sanglapghosh51@gmail.com</span>
               </li>
               <li className="flex items-start space-x-3 text-gray-400">
                 <Phone size={18} className="text-primary mt-0.5" />
-                <span>+91 85918 01300</span>
+                <span>+91 98834 83390</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
-          <p>© 2024 Accredian. All rights reserved.</p>
+          <p>© 2026 Accredian. All rights reserved.</p>
           <div className="flex space-x-6">
             <Link href="#" className="hover:text-white smooth-transition">Privacy Policy</Link>
             <Link href="#" className="hover:text-white smooth-transition">Terms of Service</Link>
