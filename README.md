@@ -4,7 +4,7 @@ A high-performance, responsive Enterprise Learning Platform built with **Next.js
 
 ## 🚀 Live Demo
 - **Live Deployed Link**: [Deployment URL will be here]
-- **GitHub Repository**: [GitHub URL will be here]
+- **GitHub Repository**: [https://github.com/sanglap1221/acceredian](https://github.com/sanglap1221/acceredian)
 
 ## 🛠️ Tech Stack
 - **Framework**: [Next.js 14 (App Router)](https://nextjs.org/)
@@ -24,6 +24,7 @@ This project was developed using **Antigravity (AI Coding Assistant)**.
 ### Where AI Helped:
 - **Component Structure**: AI provided the initial scaffolding for modular React components.
 - **Tailwind Styling**: AI suggested efficient Tailwind class combinations for complex layouts (e.g., the glassmorphism effect in the Navbar).
+- **User Profile UI**: AI implemented the premium user avatar system and colorful gradient name styling.
 - **API Route Setup**: AI generated the Next.js App Router API directory and POST handler structure.
 
 ### Manual Improvements:
@@ -41,8 +42,8 @@ This project was developed using **Antigravity (AI Coding Assistant)**.
 ## ⚙️ Setup Instructions
 1.  **Clone the repository**:
     ```bash
-    git clone [your-repo-link]
-    cd [repo-name]
+    git clone https://github.com/sanglap1221/acceredian.git
+    cd acceredian
     ```
 2.  **Install dependencies**:
     ```bash
