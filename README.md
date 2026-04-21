@@ -3,7 +3,7 @@
 A high-performance, responsive Enterprise Learning Platform built with **Next.js 14**, **Tailwind CSS**, and **Framer Motion**. This project is a partial clone of the Accredian Enterprise website, focusing on premium UI/UX, modular component architecture, and seamless navigation.
 
 ## 🚀 Live Demo
-- **Live Deployed Link**: [Deployment URL will be here]
+- **Live Deployed Link**: acceredian-e2x4xsy08-sanglaps-projects-85b580ac.vercel.app
 - **GitHub Repository**: [https://github.com/sanglap1221/acceredian](https://github.com/sanglap1221/acceredian)
 
 ## 🛠️ Tech Stack
