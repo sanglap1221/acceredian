@@ -22,35 +22,18 @@ export async function POST(req: Request) {
     // eslint-disable-next-line no-console
     console.log("Login attempt:", { email });
 
-    const backend = process.env.BACKEND_URL;
-    if (backend) {
-      const res = await fetch(`${backend.replace(/\/$/, "")}/api/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json().catch(() => ({}));
-      return new Response(JSON.stringify(json), { status: res.status, headers: { "Content-Type": "application/json" } });
-    }
-
     if (!MONGODB_URI) {
-      return new Response(JSON.stringify({ success: false, message: "No backend configured. Set BACKEND_URL or MONGODB_URI." }), { status: 500, headers: { "Content-Type": "application/json" } });
+      return new Response(JSON.stringify({ success: false, message: "Database configuration (MONGODB_URI) is missing." }), { status: 500, headers: { "Content-Type": "application/json" } });
     }
 
     const client = await getClient();
     if (!client) {
-      return new Response(JSON.stringify({ success: false, message: "DB connection failed" }), { status: 500, headers: { "Content-Type": "application/json" } });
+      return new Response(JSON.stringify({ success: false, message: "Failed to connect to the database." }), { status: 500, headers: { "Content-Type": "application/json" } });
     }
 
     const db = client.db();
     const users = db.collection("users");
-    // Diagnostic log for connection
-    // eslint-disable-next-line no-console
-    console.log("DB connected, querying user by email", email);
     const user = await users.findOne({ email });
-
-    // eslint-disable-next-line no-console
-    console.log("Login lookup result:", user ? { name: user.name, email: user.email } : null);
 
     if (!user) {
       return new Response(JSON.stringify({ success: false, message: "User not found" }), { status: 401, headers: { "Content-Type": "application/json" } });
@@ -67,7 +50,7 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ success: true, token, user: safeUser }), { status: 200, headers: { "Content-Type": "application/json" } });
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error("Login handler error:", err);
-    return new Response(JSON.stringify({ success: false, message: "Invalid request" }), { status: 400, headers: { "Content-Type": "application/json" } });
+    console.error("Login handler exception:", err);
+    return new Response(JSON.stringify({ success: false, message: "An unexpected server error occurred." }), { status: 500, headers: { "Content-Type": "application/json" } });
   }
 }

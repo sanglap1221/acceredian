@@ -22,25 +22,13 @@ export async function POST(req: Request) {
     // eslint-disable-next-line no-console
     console.log("Signup Data:", { email: data.email });
 
-    // If an external backend is configured, proxy the request there
-    const backend = process.env.BACKEND_URL;
-    if (backend) {
-      const res = await fetch(`${backend.replace(/\/$/, "")}/api/auth/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const json = await res.json().catch(() => ({}));
-      return new Response(JSON.stringify(json), { status: res.status, headers: { "Content-Type": "application/json" } });
-    }
-
     if (!MONGODB_URI) {
-      return new Response(JSON.stringify({ success: false, message: "No backend configured. Set BACKEND_URL or MONGODB_URI." }), { status: 500, headers: { "Content-Type": "application/json" } });
+      return new Response(JSON.stringify({ success: false, message: "Database configuration (MONGODB_URI) is missing." }), { status: 500, headers: { "Content-Type": "application/json" } });
     }
 
     const client = await getClient();
     if (!client) {
-      return new Response(JSON.stringify({ success: false, message: "DB connection failed" }), { status: 500, headers: { "Content-Type": "application/json" } });
+      return new Response(JSON.stringify({ success: false, message: "Failed to connect to the database." }), { status: 500, headers: { "Content-Type": "application/json" } });
     }
 
     const db = client.db();
@@ -63,7 +51,7 @@ export async function POST(req: Request) {
     return new Response(JSON.stringify({ success: true, token, user: { name: data.name, email } }), { status: 201, headers: { "Content-Type": "application/json" } });
   } catch (err) {
     // eslint-disable-next-line no-console
-    console.error("Signup handler error:", err);
-    return new Response(JSON.stringify({ success: false, message: "Invalid request" }), { status: 400, headers: { "Content-Type": "application/json" } });
+    console.error("Signup handler exception:", err);
+    return new Response(JSON.stringify({ success: false, message: "An unexpected server error occurred." }), { status: 500, headers: { "Content-Type": "application/json" } });
   }
 }
