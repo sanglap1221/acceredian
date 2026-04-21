@@ -34,7 +34,7 @@ This project was developed using **Antigravity (AI Coding Assistant)**.
 - **Signup Logic**: Manually removed the "Company" field from the signup page as per final refinements.
 
 ## 🔐 Backend Authentication
-- **Built-in Auth**: The project already includes a backend authentication system using bcrypt for password hashing and JWT tokens for session/authentication. The auth endpoints (signup/login) are implemented in the backend service and return JWTs the frontend stores for authenticated requests.
+- **Next.js API Routes**: Authentication is handled directly within the Next.js project using App Router API routes (`/api/auth`). It uses `bcryptjs` for password hashing and `jsonwebtoken` (JWT) for secure session management. Data is persisted directly to **MongoDB Atlas**.
 
 ## ⚙️ Setup Instructions
 1.  **Clone the repository**:
@@ -42,16 +42,21 @@ This project was developed using **Antigravity (AI Coding Assistant)**.
     git clone https://github.com/sanglap1221/acceredian.git
     cd acceredian
     ```
-2.  **Install dependencies**:
+2.  **Environment Variables**: Create a `.env` file in the root and add:
+    ```env
+    MONGODB_URI=your_mongodb_atlas_uri
+    JWT_SECRET=your_jwt_secret
+    ```
+3.  **Install dependencies**:
     ```bash
     npm install
     ```
-3.  **Run the development server**:
+4.  **Run the development server**:
     ```bash
     npm run dev
     ```
-4.  **Open the app**:
-    Navigate to [http://localhost:5000](http://localhost:5000)
+5.  **Open the app**:
+    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ---
 *Created as part of the Full Stack Developer Intern assignment.*
